@@ -19,10 +19,10 @@ public class Main {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        String strToHash = "Alexey";
+        String strToHash = "a";
         BigInteger iter = new BigInteger("0");
 
-        while(!checkZeros(SHA256(strToHash + String.valueOf(iter)), 1)) { iter.add(BigInteger.ONE); }
+        while(!checkZeros(SHA256(strToHash + String.valueOf(iter)), 1)) { iter = iter.add(BigInteger.ONE); }
 
         System.out.println(strToHash + String.valueOf(iter) + "-" + SHA256(strToHash + String.valueOf(iter)));
     }

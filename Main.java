@@ -11,9 +11,23 @@ public class Main {
         return iHash.toString(16);
     }
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        String strToHash = "Alexey lost 10k :)";
+    public static boolean isEnoughZeros(String str, int zeros) {
+        int iter = 0;
+        while(str.charAt(iter) == '0') { iter++; }
+        if(iter >= zeros) { return true; }
+        else { return false; }
+    }
 
-        System.out.println(strToSHA256(strToHash));
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        String strToHash = "Alexey";
+
+        BigInteger iter = new BigInteger("0");
+
+        while(!isEnoughZeros(strToSHA256(strToHash + String.valueOf(iter)), 1)) {
+            iter.add(BigInteger.ONE);
+            //System.out.println(strToHash + String.valueOf(iter) + "-" + String.valueOf(iter) + "-" + strToSHA256(strToHash + String.valueOf(iter)));
+        }
+
+        System.out.println(strToHash + String.valueOf(iter) + "-" + strToSHA256(strToHash + String.valueOf(iter)));
     }
 }
